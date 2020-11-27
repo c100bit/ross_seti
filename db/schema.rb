@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_212030) do
+ActiveRecord::Schema.define(version: 2020_11_27_232112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,17 +50,44 @@ ActiveRecord::Schema.define(version: 2020_11_27_212030) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "admin_users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "role"
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "number"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_departments_on_company_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.integer "kind", default: 0, null: false
+    t.integer "lists_count"
+    t.bigint "proposal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_id"], name: "index_documents_on_proposal_id"
+  end
+
+  create_table "necessary_costs", force: :cascade do |t|
+    t.integer "number"
+    t.string "cost_item"
+    t.float "sum"
+    t.bigint "proposal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_id"], name: "index_necessary_costs_on_proposal_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -69,6 +96,46 @@ ActiveRecord::Schema.define(version: 2020_11_27_212030) do
     t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "proposals", force: :cascade do |t|
+    t.string "number"
+    t.bigint "company_id", null: false
+    t.string "title"
+    t.bigint "category_id", null: false
+    t.text "problem_text"
+    t.text "solution_text"
+    t.text "positive_text"
+    t.boolean "creates_savings", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_proposals_on_category_id"
+    t.index ["company_id"], name: "index_proposals_on_company_id"
+  end
+
+  create_table "proposals_users", id: false, force: :cascade do |t|
+    t.bigint "proposal_id", null: false
+    t.bigint "user_id", null: false
+  end
+
+  create_table "required_terms", force: :cascade do |t|
+    t.integer "number"
+    t.string "name"
+    t.integer "days"
+    t.bigint "proposal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_id"], name: "index_required_terms_on_proposal_id"
+  end
+
+  create_table "user_rewards", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "proposal_id", null: false
+    t.integer "count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_id"], name: "index_user_rewards_on_proposal_id"
+    t.index ["user_id"], name: "index_user_rewards_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,15 +156,18 @@ ActiveRecord::Schema.define(version: 2020_11_27_212030) do
     t.string "first_name"
     t.string "last_name"
     t.string "middle_name"
+    t.string "position"
     t.string "education"
-    t.string "type", null: false
-    t.date "year_birth"
-    t.integer "work_experience"
+    t.integer "birth_year"
+    t.integer "experience_years"
     t.string "email"
+    t.integer "role", default: 0, null: false
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "department_id", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
@@ -105,4 +175,13 @@ ActiveRecord::Schema.define(version: 2020_11_27_212030) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "departments", "companies"
+  add_foreign_key "documents", "proposals"
+  add_foreign_key "necessary_costs", "proposals"
+  add_foreign_key "proposals", "categories"
+  add_foreign_key "proposals", "companies"
+  add_foreign_key "required_terms", "proposals"
+  add_foreign_key "user_rewards", "proposals"
+  add_foreign_key "user_rewards", "users"
+  add_foreign_key "users", "departments"
 end

@@ -33,12 +33,12 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
       t.string :first_name
       t.string :last_name
       t.string :middle_name
+      t.string :position
       t.string :education
-
-      t.string :type, null: false
-      t.date :year_birth
-      t.integer :work_experience
+      t.integer :birth_year
+      t.integer :experience_years
       t.string :email
+      t.integer :role, default: 0, null: false
 
       ## Tokens
       t.json :tokens

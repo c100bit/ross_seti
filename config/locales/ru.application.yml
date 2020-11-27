@@ -13,6 +13,26 @@ ru:
     required: обязательно
   activerecord:
     models:
+      category:
+        one: Категория
+        other: Категории
+        few: Категорий
+        many: Категорий
+      company:
+        one: Компания
+        other: Компании
+        few: Компаний
+        many: Компаний
+      department:
+        one: Филиал
+        other: Филиалы
+        few: Филиалов
+        many: Филиалов
+      proposal:
+        one: Предложение
+        other: Предложения
+        few: Предложений
+        many: Предложений
       page:
         one: Страница
         other: Страницы
@@ -23,27 +43,75 @@ ru:
         other: Комментарии
         few: Комментариев
         many: Комментариев
+      document:
+        one: Документ
+        other: Документы
+        few: Документов
+        many: Документов
       active_admin/comment:
         one: Комментарий
         other: Комментарии
         few: Комментариев
         many: Комментариев
-      admin_user:
-        one: Администратор
-        other: Администраторы
-        few: Администраторов
-        many: Администраторов
+      user:
+        one: Пользователь
+        other: Пользователи
+        few: Пользователей
+        many: Пользователей
     attributes:
-      user/worker:
+      document:
+        kind: Тип
+        file: Файл
+        proposal: Предложение
+        lists_count: Кол-во страниц
+        created_at: Дата создания
+        updated_at: Дата обновления
+      category:
+        title: Название
+        created_at: Дата создания
+        updated_at: Дата обновления
+      user:
+        email: Email
+        first_name: Имя
+        last_name: Фамилия
+        middle_name: Отчество
+        position: Должность
+        department: Филиал
+        company: Компания
+        education: Образование
+        birth_year: Год рождения
+        work_experience: Опыт работы
+        role: Роль
+        created_at: Дата создания
+        updated_at: Дата обновления
+      proposal:
+        number: Номер
+        company: Компания
+        users: Пользователи
+        title: Название
+        category: Категория
+        problem_text: Проблема
+        solution_text: Решение
+        positive_text: Позитивный эффект
+        necessary_costs: Затраты
+        required_terms: Сроки
+        users_rewards: Вознаграждение
+        creates_savings: Экономия
+        created_at: Дата создания
+        updated_at: Дата обновления
+        documents: Документы
+        created_at: Дата создания
+        updated_at: Дата обновления
+      department:
+        company: Компания
         name: Название
-        company_form: ОПФ
-        company_site: Сайт
-      user/client:
-        house: Дом
-        flat: Квартира
-        name: Абонент
-        individual: Физ. лицо
-        cadastral_number: Кадастровый номер
+        created_at: Дата создания
+        updated_at: Дата обновления
+      company:
+        number: Номер
+        name: Название
+        created_at: Дата создания
+        updated_at: Дата обновления
       page:
         id: №
         name: Название
@@ -51,12 +119,6 @@ ru:
         text: Текст
         created_at: Дата создания
         updated_at: Дата обновления
-      admin_user:
-        id: №
-        email: E-mail
-        current_sign_in_at: Дата текущего входа
-        sign_in_count: Количество входов
-        created_at: Дата создания
       active_admin/comment:
         namespace: Область
         resource_type: Тип ресурса

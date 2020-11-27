@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 class Ability
-
   include CanCan::Ability
 
   def initialize(user)
     # Define abilities for the passed in user here. For example:
 
-    if user.super_admin?
+    if user.admin?
       can :manage, :all
 
-    elsif user.admin?
+    elsif user.moderator?
       can :read, :all
     end
     #
@@ -32,5 +31,4 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   end
-
 end
