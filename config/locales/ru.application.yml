@@ -71,6 +71,7 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
       user:
+        allow_password_change: Разрешено сбрасывать пароль
         email: Email
         first_name: Имя
         last_name: Фамилия
@@ -80,7 +81,7 @@ ru:
         company: Компания
         education: Образование
         birth_year: Год рождения
-        work_experience: Опыт работы
+        experience_years: Опыт работы
         role: Роль
         created_at: Дата создания
         updated_at: Дата обновления
@@ -128,5 +129,3 @@ ru:
         updated_at: Дата обновления
         author: Автор
         resource: Ресурс
-      user:
-        allow_password_change: Разрешено сбрасывать пароль

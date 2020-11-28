@@ -11,7 +11,7 @@ ActiveAdmin.register User do
                  :company,
                  :education,
                  :birth_year,
-                 :work_experience,
+                 :experience_years,
                  :role
 
   index do
@@ -25,7 +25,7 @@ ActiveAdmin.register User do
     column :company
     column :education
     column :birth_year
-    column :work_experience
+    column :experience_years
     column :role
     actions
   end
@@ -48,7 +48,7 @@ ActiveAdmin.register User do
       row :company
       row :education
       row :birth_year
-      row :work_experience
+      row :experience_years
       row :role
       row :created_at
       row :updated_at
@@ -70,7 +70,7 @@ ActiveAdmin.register User do
       f.input :company
       f.input :education
       f.input :birth_year
-      f.input :work_experience
+      f.input :experience_years
       f.input :role
     end
     f.actions
