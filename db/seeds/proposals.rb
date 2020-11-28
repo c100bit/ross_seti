@@ -32,17 +32,17 @@ module Seeds
       NecessaryCost.create!(proposal: p2, sum: 10, number: 1, cost_item: 'Стоимость этапа 1')
       NecessaryCost.create!(proposal: p2, sum: 10, number: 2, cost_item: 'Стоимость этапа 2')
 
+      UserReward.create!(user: User.worker.first, proposal: p1, count: 60)
+      UserReward.create!(user: User.worker.last, proposal: p1, count: 40)
+      UserReward.create!(user: User.worker.first, proposal: p2, count: 50)
+      UserReward.create!(user: User.worker.last, proposal: p2, count: 50)
+
       Document.create!(proposal: p1, kind: :description, lists_count: 1, file: upload_seed_file('doc1.pdf'))
       Document.create!(proposal: p1, kind: :manual, lists_count: 1, file: upload_seed_file('doc1.pdf'))
       Document.create!(proposal: p1, kind: :efficiency_calculation, lists_count: 1, file: upload_seed_file('doc1.pdf'))
 
       Document.create!(proposal: p2, kind: :description, lists_count: 1, file: upload_seed_file('doc1.pdf'))
       Document.create!(proposal: p2, kind: :efficiency_calculation, lists_count: 1, file: upload_seed_file('doc1.pdf'))
-
-      UserReward.create!(user: User.worker.first, proposal: p1, count: 60)
-      UserReward.create!(user: User.worker.last, proposal: p1, count: 40)
-      UserReward.create!(user: User.worker.first, proposal: p2, count: 50)
-      UserReward.create!(user: User.worker.last, proposal: p2, count: 50)
     end
   end
 end

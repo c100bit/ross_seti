@@ -15,6 +15,8 @@ gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 # Sass adapter for the Rails asset pipeline. (https://github.com/rails/sass-rails)
 gem 'sass-rails', '>= 6'
+gem 'active_admin-humanized_enum'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 # Use webpack to manage app-like JavaScript modules in Rails (https://github.com/rails/webpacker)
 gem 'webpacker', '~> 4.0'
@@ -40,6 +42,7 @@ gem 'sidekiq'
 gem 'active_admin-humanized_enum'
 # A GraphQL language and runtime for Ruby (https://github.com/rmosolgo/graphql-ruby)
 gem 'graphql'
+gem 'translate_enum'
 # Validations for Active Storage (https://github.com/igorkasyanchuk/active_storage_validations)
 gem 'active_storage_validations'
 # Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick (https://github.com/minimagick/minimagick)

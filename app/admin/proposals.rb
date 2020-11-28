@@ -1,5 +1,5 @@
 ActiveAdmin.register Proposal do
-  menu priority: 5
+  menu priority: 1
   permit_params :number,
                 :company,
                 :user_ids,
@@ -10,7 +10,7 @@ ActiveAdmin.register Proposal do
                 :positive_text,
                 :necessary_cost_ids,
                 :required_term_ids,
-                :users_reward_ids,
+                :user_reward_ids,
                 :creates_savings,
                 :document_ids
 
@@ -24,11 +24,19 @@ ActiveAdmin.register Proposal do
     column :problem_text
     column :solution_text
     column :positive_text
-    column :necessary_costs
-    column :required_terms
-    column :users_rewards
+    column :necessary_costs do |obj|
+      obj.necessary_costs.map { |c| "#{c.number}) #{c.cost_item} - #{c.sum}" }.join('<br>').html_safe
+    end
+    column :required_terms do |obj|
+      obj.required_terms.map { |c| "#{c.number}) #{c.name} - #{c.days} дней" }.join('<br>').html_safe
+    end
+    column :user_rewards do |obj|
+      obj.user_rewards.map { |c| "#{c.user.last_name} - #{c.count}%" }.join('<br>').html_safe
+    end
     column :creates_savings
-    column :documents
+    column :documents do |obj|
+      obj.documents.map { |c| a(c.file.filename, href: url_for(c.file)) }.join.html_safe
+    end
     column :created_at
     actions
   end
@@ -47,9 +55,15 @@ ActiveAdmin.register Proposal do
       row :problem_text
       row :solution_text
       row :positive_text
-      row :necessary_costs
-      row :required_terms
-      row :users_rewards
+      row :necessary_costs do |obj|
+        obj.necessary_costs.map { |c| "#{c.number}) #{c.cost_item} - #{c.sum}" }.join('<br>').html_safe
+      end
+      row :required_terms do |obj|
+        obj.required_terms.map { |c| "#{c.number}) #{c.name} - #{c.days} дней" }.join('<br>').html_safe
+      end
+      row :user_rewards do |obj|
+        obj.user_rewards.map { |c| "#{c.user.last_name} - #{c.count}%" }.join('<br>').html_safe
+      end
       row :creates_savings
       row :documents
       row :created_at
@@ -70,7 +84,7 @@ ActiveAdmin.register Proposal do
       f.input  :positive_text
       f.input  :necessary_costs
       f.input  :required_terms
-      f.input  :users_rewards
+      f.input  :user_rewards
       f.input  :creates_savings
       f.input  :documents
     end

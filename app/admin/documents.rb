@@ -7,7 +7,9 @@ ActiveAdmin.register Document do
     selectable_column
     column :id
     column :kind
-    column :file
+    column :file do |obj|
+      a obj.file.filename, href: url_for(obj.file)
+    end
     column :proposal
     column :lists_count
 

@@ -66,6 +66,12 @@ ru:
         lists_count: Кол-во страниц
         created_at: Дата создания
         updated_at: Дата обновления
+        kinds:
+          description: Описание рационализаторского предложения
+          manual: Руководство пользователя
+          distribution: Дистрибутив
+          efficiency_calculation: Расчет планируемой эффективности
+          other: Прочие материалы
       category:
         title: Название
         created_at: Дата создания
@@ -74,6 +80,11 @@ ru:
         allow_password_change: Разрешено сбрасывать пароль
         email: Email
         first_name: Имя
+        roles:
+          worker: Сотрудник
+          expert: Эксперт
+          moderator: Модератор
+          admin: Админ
         last_name: Фамилия
         middle_name: Отчество
         position: Должность
