@@ -9,6 +9,7 @@ module Root
     field :documents, [Types::DocumentType], null: false, description: 'Список документов'
     field :companies, [Types::CompanyType], null: false, description: 'Список компаний'
     field :departments, [Types::DepartmentType], null: false, description: 'Список филиалов'
+    field :directions, [Types::DirectionType], null: false, description: 'Список направлений для общения'
 
     field :user, Types::UserType, null: false, description: 'Пользователь' do
       argument :id, ID, required: true
@@ -40,6 +41,10 @@ module Root
 
     field :current_user, Types::UserType, null: false, description: 'Текущий пользователь'
 
+    field :direction, Types::DirectionType, null: false, description: 'Направление для общения' do
+      argument :id, ID, required: true
+    end
+
     def current_user
       context[:current_user]
     end
@@ -50,6 +55,10 @@ module Root
 
     def pages
       Page.all
+    end
+
+    def directions
+      Direction.all
     end
 
     def categories
@@ -98,6 +107,10 @@ module Root
 
     def department(id:)
       Department.find(id)
+    end
+
+    def direction(id:)
+      Direction.find(id)
     end
   end
 end

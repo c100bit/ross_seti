@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_121027) do
+ActiveRecord::Schema.define(version: 2020_11_28_165134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,12 @@ ActiveRecord::Schema.define(version: 2020_11_28_121027) do
     t.index ["company_id"], name: "index_departments_on_company_id"
   end
 
+  create_table "directions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "documents", force: :cascade do |t|
     t.integer "kind", default: 0, null: false
     t.integer "lists_count"
@@ -129,6 +135,17 @@ ActiveRecord::Schema.define(version: 2020_11_28_121027) do
     t.index ["proposal_id"], name: "index_required_terms_on_proposal_id"
   end
 
+  create_table "themes", force: :cascade do |t|
+    t.text "text"
+    t.string "title"
+    t.bigint "direction_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["direction_id"], name: "index_themes_on_direction_id"
+    t.index ["user_id"], name: "index_themes_on_user_id"
+  end
+
   create_table "user_rewards", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "proposal_id", null: false
@@ -182,6 +199,8 @@ ActiveRecord::Schema.define(version: 2020_11_28_121027) do
   add_foreign_key "proposals", "categories"
   add_foreign_key "proposals", "companies"
   add_foreign_key "required_terms", "proposals"
+  add_foreign_key "themes", "directions"
+  add_foreign_key "themes", "users"
   add_foreign_key "user_rewards", "proposals"
   add_foreign_key "user_rewards", "users"
   add_foreign_key "users", "departments"
