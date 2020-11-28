@@ -67,7 +67,6 @@ ActiveAdmin.register User do
       f.input :middle_name
       f.input :position
       f.input :department
-      f.input :company
       f.input :education
       f.input :birth_year
       f.input :experience_years

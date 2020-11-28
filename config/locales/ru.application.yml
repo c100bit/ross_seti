@@ -97,9 +97,20 @@ ru:
         created_at: Дата создания
         updated_at: Дата обновления
       proposal:
+        status: Статус
+        statuses:
+          expertise: Экспертиза
+          refinement: Доработка
+          recognized: Признано
+          rejected: Отклонено
+          test_progress: Идёт опытное применение
+          test_successful: Опытное применение завершено успешно
+          test_unsuccessfully: Опытное применение завершено неуспешно
+          replication_successful: Тиражирование завершено успешно
+          replication_unsuccessfully: Тиражирование завершено неуспешно
         number: Номер
         company: Компания
-        users: Пользователи
+        users: Авторы
         title: Название
         category: Категория
         problem_text: Проблема
@@ -107,7 +118,7 @@ ru:
         positive_text: Позитивный эффект
         necessary_costs: Затраты
         required_terms: Сроки
-        users_rewards: Вознаграждение
+        user_rewards: Вознаграждение
         creates_savings: Экономия
         created_at: Дата создания
         updated_at: Дата обновления

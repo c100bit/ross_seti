@@ -14,6 +14,7 @@ end
 #  positive_text   :text
 #  problem_text    :text
 #  solution_text   :text
+#  status          :integer          default("expertise")
 #  title           :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

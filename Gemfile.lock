@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/bernat/best_in_place.git
+  revision: e42a7cd42b8c4f35f9d31ef692ab6327acdade31
+  specs:
+    best_in_place (3.1.1)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
+GIT
   remote: https://github.com/rs-pro/russian.git
   revision: c33730b12827e5ab5a88b684c11169ed6e8a6c88
   branch: master
@@ -375,6 +383,7 @@ DEPENDENCIES
   activeadmin (~> 2.7.0)
   annotate
   aws-sdk-s3
+  best_in_place!
   bootsnap (>= 1.4.2)
   byebug
   cancancan

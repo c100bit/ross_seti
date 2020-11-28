@@ -8,6 +8,23 @@ class Proposal < ApplicationRecord
   has_many :required_terms
   has_many :user_rewards
   has_many :documents
+
+  enum status: %i[expertise
+                  refinement
+                  recognized
+                  rejected
+                  test_progress
+                  test_successful
+                  test_unsuccessfully
+                  replication_successful
+                  replication_unsuccessfully]
+
+  has_many :comments, as: :resource, dependent: :destroy, class_name: 'ActiveAdmin::Comment'
+  accepts_nested_attributes_for :comments, reject_if: :reject_comment
+
+  def reject_comment(comment)
+    comment['body'].blank?
+  end
 end
 
 # == Schema Information
@@ -20,6 +37,7 @@ end
 #  positive_text   :text
 #  problem_text    :text
 #  solution_text   :text
+#  status          :integer          default("expertise")
 #  title           :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

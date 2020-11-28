@@ -137,7 +137,7 @@ ActiveAdmin.setup do |config|
   # config.comments_menu = false
   #
   # You can customize the comment menu:
-  config.comments_menu = { priority: 100 }
+  config.comments_menu = false
 
   # == Batch Actions
   #

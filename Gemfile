@@ -41,6 +41,8 @@ gem 'sidekiq'
 gem 'graphiql-rails'
 # Easily translate ActiveRecord's enums in your ActiveAdmin. (http://github.com/dhyegofernando/active_admin-humanized_enum)
 gem 'active_admin-humanized_enum'
+gem 'best_in_place', github: 'bernat/best_in_place'
+
 # A GraphQL language and runtime for Ruby (https://github.com/rmosolgo/graphql-ruby)
 gem 'graphql'
 gem 'translate_enum'
