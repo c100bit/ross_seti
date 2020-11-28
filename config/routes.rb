@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  root to: redirect('/admin')
 
   devise_for :users, ActiveAdmin::Devise.config
 

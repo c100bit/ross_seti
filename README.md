@@ -1,24 +1,47 @@
-# README
+# Россети Backend Server
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Backend Server информационной системы для организации создания, контроля, ведения реестра рацпредложений ПАО "Россети" в электронном виде. Позволяет сотрудникам создавать рацпредложения, просматривать реестр. Так же имеется механизм общения между сотрудниками, обсуждения общих тем. Для вовлечения пользователей так же используется геймификация процесса работы с приложением.
 
-Things you may want to cover:
+Backend Server предоставляет возможность управления через admin-панель, а также предоставляет GraphQL API механизм для взаимодействия с клиентами.
 
-* Ruby version
+Стек: rails, puma, redis, posgresql, graphql
 
-* System dependencies
+[Admin-панель](https://ross-seti.herokuapp.com)
 
-* Configuration
+```
+email: admin@test.local
+password: password
+```
 
-* Database creation
+Основные запросы можно просмотреть через [GraphiQL](https://ross-seti.herokuapp.com/graphiql)
+или через Altair Graphql Client - post [/graphql](https://ross-seti.herokuapp.com/graphql)
 
-* Database initialization
+Запросы с авторизацией можно просмотреть через Altair Graphql Client - post [/auth](https://ross-seti.herokuapp.com/auth)
 
-* How to run the test suite
+## Описание основных каталогов
 
-* Services (job queues, cache servers, search engines, etc.)
+`app\graphql\*`
+GraphQL API для клиентов. Мутации и типы
 
-* Deployment instructions
+`app\congfig\*`
+Конфигурации
 
-* ...
+`app\admin\*`
+Админ-панель для создания, редактирования, удаления предложений, компаний, пользователей и тд
+
+`app\models\*`
+Модели объектов
+
+`lib\tasks\*`
+Таски
+
+`db\*`
+Сиды, миграции, схема
+
+## Инструкция по запуску
+
+[Развернуть с гитхаб на heroku](https://devcenter.heroku.com/articles/getting-started-with-rails6)
+
+```
+
+```
