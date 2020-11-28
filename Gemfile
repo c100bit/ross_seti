@@ -56,6 +56,7 @@ gem 'aws-sdk-s3', require: false
 gem 'graphql_devise'
 # Effortless multi-environment settings in Rails, Sinatra, Pandrino and others (https://github.com/rubyconfig/config)
 gem 'config'
+gem 'rest-client'
 # Russian language support for Ruby and Rails (https://github.com/rs-pro/russian)
 gem 'rs_russian', github: 'rs-pro/russian', branch: 'master'
 
