@@ -2,50 +2,102 @@
 
 module Root
   class QueryType < Types::Base::Object
-    # field :news_list, [Types::NewsType], null: false
-    # field :pages, [Types::PageType], null: false
-    # field :polls, [Types::PollType], null: false
+    field :users, [Types::UserType], null: false, description: 'Список пользователей'
+    field :pages, [Types::PageType], null: false, description: 'Страницы'
+    field :categories, [Types::CategoryType], null: false, description: 'Список категорий'
+    field :proposals, [Types::ProposalType], null: false, description: 'Список предложений'
+    field :documents, [Types::DocumentType], null: false, description: 'Список документов'
+    field :companies, [Types::CompanyType], null: false, description: 'Список компаний'
+    field :departments, [Types::DepartmentType], null: false, description: 'Список филиалов'
 
-    # field :page, Types::PageType, null: false do
-    #   argument :id, ID, required: true
-    # end
+    field :user, Types::UserType, null: false, description: 'Пользователь' do
+      argument :id, ID, required: true
+    end
 
-    # field :news, Types::NewsType, null: false do
-    #   argument :id, ID, required: true
-    # end
+    field :page, Types::PageType, null: false, description: 'Страница' do
+      argument :id, ID, required: true
+    end
 
-    # field :user, Types::UserType, null: false
+    field :category, Types::CategoryType, null: false, description: 'Категория' do
+      argument :id, ID, required: true
+    end
 
-    # field :poll, Types::PollType, null: false do
-    #   argument :id, ID, required: true
-    # end
+    field :proposal, Types::ProposalType, null: false, description: 'Предложение' do
+      argument :id, ID, required: true
+    end
 
-    # def user
-    #   context[:current_user]
-    # end
+    field :document, Types::DocumentType, null: false, description: 'Документ' do
+      argument :id, ID, required: true
+    end
 
-    # def poll(id:)
-    #   Poll.find(id)
-    # end
+    field :company, Types::CompanyType, null: false, description: 'Компания' do
+      argument :id, ID, required: true
+    end
 
-    # def page(id:)
-    #   Page.find(id)
-    # end
+    field :department, Types::DepartmentType, null: false, description: 'Филиал' do
+      argument :id, ID, required: true
+    end
 
-    # def news(id:)
-    #   News.find(id)
-    # end
+    field :current_user, Types::UserType, null: false, description: 'Текущий пользователь'
 
-    # def polls
-    #   Poll.all
-    # end
+    def current_user
+      context[:current_user]
+    end
 
-    # def pages
-    #   Page.all
-    # end
+    def users
+      User.all
+    end
 
-    # def news_list
-    #   News.all
-    # end
+    def pages
+      Page.all
+    end
+
+    def categories
+      Category.all
+    end
+
+    def proposals
+      Proposal.all
+    end
+
+    def documents
+      Document.all
+    end
+
+    def companies
+      Company.all
+    end
+
+    def departments
+      Department.all
+    end
+
+    def user(id:)
+      User.find(id)
+    end
+
+    def page(id:)
+      Page.find(id)
+    end
+
+    def category(id:)
+      Category.find(id)
+    end
+
+    def proposal(id:)
+      Proposal.find(id)
+    end
+
+    def document(id:)
+      Document.find(id)
+    end
+
+    def company(id:)
+      Company.find(id)
+    end
+
+    def department(id:)
+      Department.find(id)
+    end
   end
 end

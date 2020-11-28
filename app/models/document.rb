@@ -3,6 +3,14 @@ class Document < ApplicationRecord
   has_one_attached :file
 
   enum kind: %i[description manual distribution efficiency_calculation other]
+
+  def file_url
+    url_for(file)
+  end
+
+  def file_name
+    file.filename
+  end
 end
 
 # == Schema Information

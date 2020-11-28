@@ -38,6 +38,7 @@ gem 'devise'
 gem 'devise-i18n'
 # Simple, efficient background processing for Ruby (http://sidekiq.org)
 gem 'sidekiq'
+gem 'graphiql-rails'
 # Easily translate ActiveRecord's enums in your ActiveAdmin. (http://github.com/dhyegofernando/active_admin-humanized_enum)
 gem 'active_admin-humanized_enum'
 # A GraphQL language and runtime for Ruby (https://github.com/rmosolgo/graphql-ruby)
