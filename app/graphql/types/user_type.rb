@@ -7,7 +7,7 @@ module Types
     field :last_name, String, null: false
     field :middle_name, String, null: false
     field :position, String, null: false
-
+    field :rating, Integer, null: false
     field :department, DepartmentType, null: false
     field :company, CompanyType, null: false
 

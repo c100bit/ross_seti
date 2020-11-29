@@ -17,6 +17,7 @@ end
 #
 #  id              :bigint           not null, primary key
 #  creates_savings :boolean          default(FALSE)
+#  likes           :integer          default(0), not null
 #  number          :string
 #  positive_text   :text
 #  problem_text    :text

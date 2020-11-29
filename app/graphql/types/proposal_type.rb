@@ -12,7 +12,7 @@ module Types
     field :necessary_costs, [NecessaryCostType], null: false
     field :required_terms, [RequiredTermType], null: false
     field :created_at, String, null: false
-
+    field :likes, Integer, null: false
     field :problem_text, String, null: false
     field :solution_text, String, null: false
     field :positive_text, String, null: false

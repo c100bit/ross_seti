@@ -30,6 +30,10 @@ class User < ApplicationRecord
   def expert?
     role == 'expert'
   end
+
+  def rating
+    rand(100)
+  end
 end
 
 # == Schema Information

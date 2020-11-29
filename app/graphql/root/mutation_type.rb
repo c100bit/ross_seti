@@ -8,5 +8,7 @@ module Root
                            description: 'Создать документ'
     field :createTheme, mutation: Mutations::CreateTheme,
                         description: 'Создать тему для общения'
+    field :likeProposal, mutation: Mutations::LikeProposal,
+                         description: 'Лайкнуть предложение'
   end
 end
