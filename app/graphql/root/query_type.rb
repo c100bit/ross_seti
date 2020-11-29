@@ -10,6 +10,7 @@ module Root
     field :companies, [Types::CompanyType], null: false, description: 'Список компаний'
     field :departments, [Types::DepartmentType], null: false, description: 'Список филиалов'
     field :directions, [Types::DirectionType], null: false, description: 'Список направлений для общения'
+    field :themes, [Types::ThemeType], null: false, description: 'Список тем для общения'
 
     field :user, Types::UserType, null: false, description: 'Пользователь' do
       argument :id, ID, required: true
@@ -42,6 +43,10 @@ module Root
     field :current_user, Types::UserType, null: false, description: 'Текущий пользователь'
 
     field :direction, Types::DirectionType, null: false, description: 'Направление для общения' do
+      argument :id, ID, required: true
+    end
+
+    field :theme, Types::ThemeType, null: false, description: 'Тема для общения' do
       argument :id, ID, required: true
     end
 
@@ -81,6 +86,10 @@ module Root
       Department.all
     end
 
+    def themes
+      Theme.all
+    end
+
     def user(id:)
       User.find(id)
     end
@@ -111,6 +120,10 @@ module Root
 
     def direction(id:)
       Direction.find(id)
+    end
+
+    def theme(id:)
+      Theme.find(id)
     end
   end
 end
